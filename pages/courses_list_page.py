@@ -51,20 +51,25 @@ class CoursesListPage(BasePage):
     def check_click_create_course_button(self):
         self.create_course_button.click()
 
-    def check_visible_menu_card(self, params: CheckVisibleCourseCardParams):
-        expect(self.course_image.nth(params.index)).to_be_visible()
+    def check_visible_menu_card(self,
+                                index: int,
+                                title: str,
+                                estimated_time: str,
+                                max_score: str,
+                                min_score: str):
+        expect(self.course_image.nth(index)).to_be_visible()
 
-        expect(self.course_title.nth(params.index)).to_be_visible()
-        expect(self.course_title.nth(params.index)).to_have_text(params.title)
+        expect(self.course_title.nth(index)).to_be_visible()
+        expect(self.course_title.nth(index)).to_have_text(title)
 
-        expect(self.course_max_text.nth(params.index)).to_be_visible()
-        expect(self.course_max_text.nth(params.index)).to_have_text(f'Max score: {params.max_score}')
+        expect(self.course_max_text.nth(index)).to_be_visible()
+        expect(self.course_max_text.nth(index)).to_have_text(f'Max score: {max_score}')
 
-        expect(self.course_min_text.nth(params.index)).to_be_visible()
-        expect(self.course_min_text.nth(params.index)).to_have_text(f'Min score: {params.min_score}')
+        expect(self.course_min_text.nth(index)).to_be_visible()
+        expect(self.course_min_text.nth(index)).to_have_text(f'Min score: {min_score}')
 
-        expect(self.course_estimated_time.nth(params.index)).to_be_visible()
-        expect(self.course_estimated_time.nth(params.index)).to_have_text(f'Estimated time: {params.estimated_time}')
+        expect(self.course_estimated_time.nth(index)).to_be_visible()
+        expect(self.course_estimated_time.nth(index)).to_have_text(f'Estimated time: {estimated_time}')
 
     def click_edit_course(self, index: int):
         self.course_menu_button.nth(index).click()
