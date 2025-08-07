@@ -14,8 +14,11 @@ from allure_commons.types import  Severity
 @pytest.mark.registration
 @allure.tag(AllureTag.REGRESSION, AllureTag.REGISTRATION)
 @allure.epic(AllureEpic.LMS)
+@allure.parent_suite(AllureEpic.LMS)
 @allure.feature(AllureFeature.AUTHENTICATION)
+@allure.suite(AllureFeature.AUTHENTICATION)
 @allure.story(AllureStory.REGISTRATION)
+@allure.sub_suite(AllureStory.REGISTRATION)
 class TestRegistration:
     @allure.title('Registration with correct email, username and password')
     @allure.severity(Severity.CRITICAL)
